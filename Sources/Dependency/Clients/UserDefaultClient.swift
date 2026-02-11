@@ -58,7 +58,7 @@ extension UserDefaultClient: DependencyKey {
 }
 
 extension DependencyValues {
-    var userDefaults: UserDefaultClient {
+    public var userDefaults: UserDefaultClient {
         get { self[UserDefaultClient.self] }
         set { self[UserDefaultClient.self] = newValue }
     }
