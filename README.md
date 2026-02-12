@@ -226,7 +226,7 @@ enum UserKeys: String, UserDefaultKey {
 final class UserViewModel: ObservableObject {
     @Dependency(\.userDefaults) var userDefaults
     
-    // String values
+    // String values default value "" nonnullable
     func getUserName() -> String {
         userDefaults.string(UserKeys.userName)
     }
@@ -235,7 +235,7 @@ final class UserViewModel: ObservableObject {
         userDefaults.setValue(value, UserKeys.userName)
     }
     
-    // Int values
+    // Int values, nonnullable default 0
     func getUserAge() -> Int {
         userDefaults.int(UserKeys.userAge)
     }
@@ -244,7 +244,7 @@ final class UserViewModel: ObservableObject {
         userDefaults.setValue(value, UserKeys.userAge)
     }
     
-    // Bool values
+    // Bool values, nonnullable default false
     func getIsLoggedIn() -> Bool {
         userDefaults.bool(UserKeys.isLoggedIn)
     }
@@ -253,7 +253,7 @@ final class UserViewModel: ObservableObject {
         userDefaults.setValue(value, UserKeys.isLoggedIn)
     }
     
-    // Data values (for Codable types)
+    // Data values, nullable value default nil
     func saveLastLoginDate() {
         let data = try? JSONEncoder().encode(Date())
         if let data = data {
